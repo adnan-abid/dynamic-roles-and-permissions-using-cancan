@@ -1,0 +1,26 @@
+<h1>Listing drawings</h1>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @drawings.each do |drawing| %>
+    <tr>
+      <td>
+        <%= drawing.sheet_number %>
+      </td>
+      <td>
+        <%= link_to 'Show', drawing %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_drawing_path(drawing) %>
+      </td>
+      <td>
+        <%= link_to 'Destroy', drawing, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+<%= link_to 'New Drawing', new_drawing_path %>

@@ -1,0 +1,8 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<br/>
+<%= @part.name %>
+
+<%= link_to 'Edit | ', edit_part_path(@part)  if @current_permissions.include?(["Part", "update"]) %>
+<%= link_to 'Back', parts_path %>
