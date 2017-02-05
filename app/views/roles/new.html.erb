@@ -44,44 +44,39 @@
 =end %>
 <div class="row">
   <div class="col-md-12">
-    <div class="">
+    <div class="authform">
       <h3>Role <%= @role.name %></h3>
-      <%= form_for( @role, :url => role_path, :method => :put) do |f| %>
-        <fieldset>
-          <h3>Permissions</h3>
-        </fieldset>
-        <fieldset>
-          <table class="table">
-            <thead>
-              <th>Class</th>
-              <th>Action</th>
-              <th>#{check_box_tag 'main', 0, false}</th>
-            </thead>
-            <tbody>
-              <% @permissions.each do |permission| %>
-                <tr>
-                  <td>
-                    <%= permission.subject_class %>
-                  </td>
-                  <td>
-                    <%= permission.action %>
-                  </td>
-                  <td>
-                    <%= check_box_tag 'permissions[]', permission.id, @role_permissions.include?(permission.id), {array: true, class: "check_box"}  %>
-                  </td>
-                </tr>
+      <%= form_for @role do |f| %>
+        <% if @role.errors.any? %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2>
+              <%= "#{pluralize(@role.errors.count, "error")} prohibited this role from being saved:" %>
+            </h2>
+            <ul>
+              <% @role.errors.full_messages.each do |msg| %>
+                <li>
+                  <%= msg %>
+                </li>
               <% end %>
-            </tbody>
-          </table>
-        </fieldset>
+            </ul>
+          </div>
+
+        <% end %>
         <fieldset>
-            <div class="span16 offset2">
-              <div class="clearfix">
-                <%= f.submit "Update", :class => 'btn primary' %>
-                <%= link_to 'Cancel', roles_path %>
-              </div>
-            </div>
+         <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          
+
         </fieldset>
+          <div class="clearfix"></div>
+          <div class="form-group pull-right">
+            <%= f.submit "Save", :class => 'btn primary' %>
+            <%= link_to 'Cancel', roles_path, :class => 'btn primary' %>
+          </div>
+          
       <% end %>
     </div>
   </div>

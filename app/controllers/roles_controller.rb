@@ -5,7 +5,27 @@ class RolesController < ApplicationController
   def index
     @roles = Role.all{|i| i.name != "Super Admin"}
   end
+  def new
+    @role = Role.new
 
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @role }
+    end
+  end
+  def create
+    @role = Role.new(params.require(:role).permit(:name))
+
+    respond_to do |format|
+      if @role.save
+        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.json { render json: @role, status: :created, location: @role }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   def show
     @role = Role.find(params[:id])
     @permissions = @role.permissions
@@ -28,6 +48,16 @@ class RolesController < ApplicationController
     render 'edit'
   end
 
+  def destroy
+    @role = Role.find(params[:id])
+    @role.destroy
+
+    respond_to do |format|
+      format.html { redirect_to roles_url }
+      format.json { head :no_content }
+    end
+  end
+  
   private
 
   def is_super_admin?

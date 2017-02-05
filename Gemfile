@@ -36,7 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #gem 'pg'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
+gem 'high_voltage'
 gem 'cancan'
 #gem 'haml-rails'
 

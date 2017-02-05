@@ -1,22 +1,34 @@
-<h1>Super Admin: Listing Roles</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @roles.each do |role| %>
-    <tr>
-      <td>
-        <%= role.name %>
-      </td>
-      <td>
-        <%= link_to 'Show', role %>
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_role_path(role) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-<br/>
+<div class="container">
+  <div class="row">
+    <h3>Super Admin: Listing Roles</h3>
+    <div class="col-md-12">
+      <%= link_to '', new_role_path, :title=>'Create New Role', :class => 'pull-right glyphicon glyphicon-plus' if current_user.super_admin? %>
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @roles.each do |role| %>
+          <tr>
+            <td>
+              <%= role.name %>
+            </td>
+            <td>
+              <%= link_to '', role, :class => 'glyphicon glyphicon-eye-open', :title=>'View' %>
+            </td>
+            <td>
+              <%= link_to '', edit_role_path(role), :class => 'glyphicon glyphicon-pencil', :title=>'Edit Your Role'  %>
+            </td>
+            <td>
+             <%= link_to '', role, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'glyphicon glyphicon-remove', :title=>'Delete Your Role' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
