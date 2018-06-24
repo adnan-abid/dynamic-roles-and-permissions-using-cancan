@@ -1,0 +1,43 @@
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.7
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>
+ <%
+=begin %>
+<% cache("footer") do %>
+<div id="bottom-curve">
+  <div>
+    <strong>Punchh &copy <%= Date.today.year %></strong> &nbsp;
+    <%= link_to("Business Sign Up",new_business_path, :class => 'text-muted') %> &nbsp;
+    <%= link_to("FAQ",faq_path, :class => 'text-muted') %> &nbsp;
+    <%= link_to("Contact",contact_us_path, :class => 'text-muted') %> &nbsp;
+    <%= link_to("About",about_us_path, :class => 'text-muted') %> &nbsp;
+    <a href="http://punchh.com/blog" class = 'text-muted'>Blog</a> &nbsp;
+    <%= link_to("Press",press_path, :class => 'text-muted') %> &nbsp;
+    <%= link_to("Privacy",privacy_policy_path, :class => 'text-muted') %> &nbsp;
+    <%= link_to("Careers",static_careers_path, :class => 'text-muted') %>
+  </div>
+</div>
+
+<% no_google_analytics ||= false %>
+<% if Rails.env.production? && !no_google_analytics && can?(:be_google_analyzed,:all) %>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20357927-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+<% end %>
+<% end %>
+ <%
+=end %>

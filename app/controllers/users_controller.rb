@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  
+  layout :resolve_layout
 
   def index
     @users = User.all
+    #raise @users.to_yaml
+    #raise @users.inspect
+    #logger.debug "New article: #{@users.inspect}"
   end
 
   def show
@@ -34,13 +37,24 @@ class UsersController < ApplicationController
   private
 
   def admin_only
-    unless current_user.admin?
+    unless current_user.super_admin?
       redirect_to root_path, :alert => "Access denied."
     end
   end
 
   def secure_params
     params.require(:user).permit(:role)
+  end
+
+  def resolve_layout
+    case action_name
+    when "new", "create"
+      "application"
+    when "index"
+      "dashboard_superadmin"
+    else
+      "application"
+    end
   end
 
 end

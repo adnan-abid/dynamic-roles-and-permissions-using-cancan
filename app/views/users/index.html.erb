@@ -1,0 +1,12 @@
+        <%
+=begin %>
+<%= current_user.role.name.inspect %>
+        <%
+=end %>
+<% if user_signed_in? %>
+	<% if current_user.super_admin? %>
+		<%= render 'dashboard_superadmin' %>
+	<% else %>
+		Guest
+	<% end %>
+<% end %>

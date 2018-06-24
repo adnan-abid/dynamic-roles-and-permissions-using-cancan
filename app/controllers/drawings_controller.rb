@@ -38,6 +38,12 @@ class DrawingsController < ApplicationController
       end
     end
   end
+  def edit
+   
+  end
+  def update
+   
+  end
 
   def destroy
     @drawing = Drawing.find(params[:id])

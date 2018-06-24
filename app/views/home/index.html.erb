@@ -1,8 +1,8 @@
-<br/>
-<br/>
-<br/>
-<br/>
-<%= link_to "Roles", roles_path if current_user.super_admin? %>
-<br/>
-<%= link_to "Parts", parts_path if @current_permissions.include?(["Part", "index"]) %>
-<br/>
+        <%
+=begin %>
+<%= current_user.role.name.inspect %>
+        <%
+=end %>
+
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>

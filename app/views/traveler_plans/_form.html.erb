@@ -1,0 +1,22 @@
+<% if @traveler_plan.errors.any? %>
+  <div id="errors">
+    <ul>
+    <% @traveler_plan.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%
+=begin %>
+<%= form_for build_traveler_plan(@traveler_plan) do |f| %>
+  <%= form_for @traveler_plan do |f| %>
+<%
+=end %>  
+<%= form_for build_traveler_plan(@traveler_plan) do |f| %>
+  <% if params[:all].nil? %>
+    <%= render 'traveler_plans/steps/current_step', f: f %>
+  <% else %>
+    <%= render 'traveler_plans/steps/all_steps', f: f %>
+  <% end %>
+<% end %>

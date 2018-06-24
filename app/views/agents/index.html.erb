@@ -1,0 +1,10 @@
+<h1>Agents#index</h1>
+<p>Find me in app/views/agents/index.html.erb</p>
+<%= current_user.role.name.inspect %>
+<% if user_signed_in? %>
+	<% if current_user.agent? %>
+		<%= render 'dashboard_agent' %>
+	<% else %>
+		Guest
+	<% end %>
+<% end %>

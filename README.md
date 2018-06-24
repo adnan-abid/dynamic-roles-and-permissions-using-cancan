@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+* https://blog.joshsoftware.com/2012/10/23/dynamic-roles-and-permissions-using-cancan/

@@ -12,11 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= bootstrap
+ *= require adminlet/bootstrap/css/bootstrap.min
+ *= require adminlet/plugins/datatables/dataTables.bootstrap.css
+ *= require adminlet/plugins/jvectormap/jquery-jvectormap-1.2.2
+ *= require adminlet/AdminLTE
+ *= require adminlet/skins/_all-skins
  */
+ @import "bootstrap";
  @import "bootstrap-compass";
  @import "bootstrap-sprockets";
- @import "bootstrap";
- $navbar-default-bg: #312312;
-$light-orange: #ff8c00;
-$navbar-default-color: $light-orange;
- @import "bootstrap/theme";
+
+ 

@@ -17,9 +17,7 @@ namespace 'permissions' do
 
     arr.each do |controller|
       if controller.permission #only those controller who represent a model
-
         write_permission(controller.permission, "manage", 'manage') #add permission to do CRUD for every model.
-
         controller.action_methods.each do |method|
           if method =~ /^([A-Za-z\d*]+)+([\w]*)+([A-Za-z\d*]+)$/ #add_user, add_user_info, Add_user, add_User
             name, cancan_action = eval_cancan_action(method)
@@ -62,7 +60,8 @@ def eval_cancan_action(action)
 end
 
 def write_permission(modell, cancan_action, name)
-  permission  = Permission.find(:first, :conditions => ["subject_class = ? and action = ?", modell, cancan_action])
+  #permission  = Permission.find(:first, :conditions => ["subject_class = ? and action = ?", modell, cancan_action])
+  permission  = Permission.where(:subject_class => modell, :action=>cancan_action).first
   unless permission
     permission = Permission.new
     permission.name = name

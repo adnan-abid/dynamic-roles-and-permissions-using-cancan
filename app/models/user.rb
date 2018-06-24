@@ -13,4 +13,11 @@ class User < ApplicationRecord
   def super_admin?
     self.role.name == "Super Admin"
   end
+  def traveler?
+    self.role.name == "Traveler"
+  end
+  def agent?
+    self.role.name == "Agent"
+  end
+
 end

@@ -1,4 +1,29 @@
-<div class="authform">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <div class="register-box-body">
+      <p class="login-box-msg">Forgot your password?</p>
+      <p>We'll send password reset instructions.</p>
+       <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
+       
+        <%= devise_error_messages! %>
+        <div class="form-group has-feedback">
+          <%= f.email_field :email, :autofocus => true, class: 'form-control', :placeholder=>"Email" %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+       
+        <div class="row">
+         
+          <div class="col-xs-6">
+            <%= f.submit 'Reset Password', :class => 'btn btn-block btn-primary btn-flat' %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+<%
+=begin %><div class="authform">
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
     <h3>Forgot your password?</h3>
     <p>We'll send password reset instructions.</p>
@@ -10,3 +35,5 @@
      <%= f.submit 'Reset Password', :class => 'button right' %>
   <% end %>
 </div>
+<%
+=end %>

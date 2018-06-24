@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="">
+      <h3>Permission </h3>
+      <pre>
+                <%
+=begin %>
+          <%= @models.inspect %>
+          <%= @model_namesss.inspect %>
+          <%= @modelName.inspect %>
+          <%= @model_namesaa.inspect %>
+        <%
+=end %>
+<%= @table_names.inspect %>
+<%= @model_names.inspect %>
+      </pre>
+      <%= form_for @permission do |f| %>
+
+        <fieldset>
+          <h3>Add New Permission </h3>
+        </fieldset>
+        <fieldset>
+        <div class="form-group">
+	      <%= f.label :subject_class %>
+        <%
+=begin %>
+	      <%= f.select(:role, @modelName.keys.map {|role| [role.titleize,role]}, :autofocus => true, class: 'form-control') %>	
+        <%
+=end %>
+	      
+	    </div>
+	    
+        </fieldset>
+        <fieldset>
+            <div class="span16 offset2">
+              <div class="clearfix">
+                <%= f.submit "Save", :class => 'btn primary' %>
+                <%= link_to 'Cancel', permissions_path %>
+              </div>
+            </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>

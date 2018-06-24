@@ -1,3 +1,59 @@
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <div class="register-box-body">
+    <p class="login-box-msg">Edit <%= resource_name.to_s.humanize %></p>
+   
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group has-feedback">
+          <%= f.text_field :name, :autofocus => true, class: 'form-control', :placeholder=>"Full name" %>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <%= f.email_field :email, :autofocus => true, class: 'form-control', :placeholder=>"Email" %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>    
+        </div>
+        <div class="form-group has-feedback">
+          <%= f.password_field :password, class: 'form-control',:placeholder=>"Password"  %>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <%= f.password_field :password_confirmation, class: 'form-control',:placeholder=>"Retype password"  %>
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <%= f.password_field :current_password, class: 'form-control',:placeholder=>"Current password"  %>
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+              <div class="checkbox icheck">
+                <label>
+                  <%= f.check_box :remember_me %> I agree to the <a href="#">terms</a>
+                </label>
+              </div>
+          </div>
+          <div class="col-xs-4">
+            <%= f.submit 'Update', :class => 'btn btn-primary btn-block btn-flat' %>
+          </div>
+        </div>
+      <% end %>
+      <div class="social-auth-links text-center">
+        <h3>Cancel Account</h3>
+        <p>Unhappy? We'll be sad to see you go.</p>
+        <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+    </div>
+    <
+  </div>
+</div>
+
+<%
+=begin %>
 <div class="authform">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
@@ -39,3 +95,5 @@
 <p>Unhappy? We'll be sad to see you go.</p>
 <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
 </div>
+<%
+=end %>

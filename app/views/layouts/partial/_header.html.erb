@@ -1,0 +1,10 @@
+<% mod ||= nil %>
+<% if mod %>
+  <% if !signed_in? %>
+    <div class="clear"></div>
+  <% else %>
+    <%= render "/layouts/#{mod}_navigation" %>
+  <% end %>
+<% else %>
+  <div class="clearfix"></div>
+<% end %>
